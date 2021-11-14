@@ -1,0 +1,10 @@
+.auth-page{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--blue);
+}
+.auth-page > .info{
+    text-align: center;
+    height: 50%;
+}
