@@ -2,9 +2,24 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
+    padding: 1rem;
     background-color: var(--blue);
 }
-.auth-page > .info{
+.auth-page .info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
     height: 50%;
+    color: var(--white);
+}
+.auth-page > .info > p{
+    margin: 2rem 0;
+    font-size: 1.5rem;
+}
+.auth-page .auth{
+    height: 50%;
+    border-radius: 1.3rem;
+    padding: 2rem;
+    background-color: var(--white);
 }
