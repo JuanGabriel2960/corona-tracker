@@ -14,6 +14,7 @@ export class AuthService {
     return this.http.get(`${environment.BACKEND_URL}/api/basic/services`)
       .pipe(
         tap((resp: any)=>{
+          // NOTE: remove console.log
           console.log(resp)
         })
     )
