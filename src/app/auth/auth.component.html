@@ -1,11 +1,9 @@
 <div class="auth-page">
     <div class="info">
-        <h2>Stay informed about COVID</h2>
-        <p>You will be able to see the amount of infected, recovered and dead by covid of all the countries of the world</p>
-        <div>
-            <button></button>
-            <button></button>
-            <button></button>
+        <h2>{{services[index]?.title}}</h2>
+        <p>{{services[index]?.description}}</p>
+        <div class="info-buttons">
+            <button *ngFor="let service of services" [ngClass]="{'on': index==services.indexOf(service)}" (click)="changeService(services.indexOf(service))"></button>
         </div>
     </div>
     <div class="auth">

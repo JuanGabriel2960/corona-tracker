@@ -23,3 +23,20 @@
     padding: 2rem;
     background-color: var(--white);
 }
+.info-buttons{
+    display: flex;
+    justify-content: center;
+}
+.info-buttons > button{
+    width: 2rem;
+    height: 1rem;
+    border-radius: 0.5rem;
+    transition: width 0.4s linear;
+    background-color: var(--white);
+}
+.info-buttons > button.on{
+    width: 5.5rem;
+}
+.info-buttons > button:not(:last-child){
+    margin-right: 1rem;
+}
