@@ -1,0 +1,42 @@
+.auth-page{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: var(--blue);
+}
+.auth-page .info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 50%;
+    color: var(--white);
+}
+.auth-page > .info > p{
+    margin: 2rem 0;
+    font-size: 1.5rem;
+}
+.auth-page .auth{
+    height: 50%;
+    border-radius: 1.3rem;
+    padding: 2rem;
+    background-color: var(--white);
+}
+.info-buttons{
+    display: flex;
+    justify-content: center;
+}
+.info-buttons > button{
+    width: 2rem;
+    height: 1rem;
+    border-radius: 0.5rem;
+    transition: width 0.4s linear;
+    background-color: var(--white);
+}
+.info-buttons > button.on{
+    width: 5.5rem;
+}
+.info-buttons > button:not(:last-child){
+    margin-right: 1rem;
+}
