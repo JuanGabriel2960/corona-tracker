@@ -1,17 +1,19 @@
 <div class="login">
     <div class="text">
         <h3>Login</h3>
-        <span>Please login with your account to continue.</span>
+        <span>Login with your account to continue.</span>
     </div>
 
-    <form class="form">
+    <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="input">
             <label for="email">Email</label>
-            <input type="email" id="email" />
+            <input type="email" id="email" name="email" formControlName="email" />
+            <span class="err-msg" *ngIf="invalidField('email')">{{emailErrorMsg}}</span>
         </div>
         <div class="input">
             <label for="password">Password</label>
-            <input type="password" id="password" />
+            <input type="password" id="password" name="password" formControlName="password" />
+            <span class="err-msg" *ngIf="invalidField('password')">{{passwordErrorMsg}}</span>
         </div>
         <button>Login</button>
     </form>

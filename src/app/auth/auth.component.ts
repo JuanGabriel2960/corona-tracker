@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthCMSService } from './services/auth-cms.service';
-import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -12,7 +11,7 @@ export class AuthComponent implements OnInit {
   index: number = 0
   services: any[] = []
 
-  constructor(private authService: AuthService, private authCMS: AuthCMSService) { }
+  constructor(private authCMS: AuthCMSService) { }
 
   ngOnInit(): void {
     this.authCMS.getServices()
