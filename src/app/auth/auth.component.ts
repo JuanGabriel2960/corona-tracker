@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthCMSService } from './services/auth-cms.service';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -11,10 +12,10 @@ export class AuthComponent implements OnInit {
   index: number = 0
   services: any[] = []
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private authCMS: AuthCMSService) { }
 
   ngOnInit(): void {
-    this.authService.getServices()
+    this.authCMS.getServices()
     .subscribe(resp=>{
       this.services=resp
     }, (err)=>{
