@@ -1,12 +1,12 @@
 <div class="auth-page">
-    <div class="info">
+    <div class="info" [ngClass]="{'moveDown': animate}">
         <h2>{{services[index]?.title}}</h2>
         <p>{{services[index]?.description}}</p>
         <div class="info-buttons">
             <button *ngFor="let service of services" [ngClass]="{'on': index==services.indexOf(service)}" (click)="changeService(services.indexOf(service))"></button>
         </div>
     </div>
-    <div class="auth">
+    <div class="auth" [ngClass]="{'moveTop': animate}">
         <router-outlet></router-outlet>
     </div>
 </div>

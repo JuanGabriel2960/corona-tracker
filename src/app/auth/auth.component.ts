@@ -10,11 +10,18 @@ export class AuthComponent implements OnInit {
 
   index: number = 0
   services: any[] = []
+  animate: boolean;
+  private _subscription;
 
-  constructor(private authCMS: AuthCMSService) { }
+  constructor(private authCMSService: AuthCMSService) {
+    this.animate = authCMSService.animate
+    this._subscription = authCMSService.statusChange.subscribe((value) => { 
+      this.animate = value; 
+    });
+  }
 
   ngOnInit(): void {
-    this.authCMS.getServices()
+    this.authCMSService.getServices()
     .subscribe(resp=>{
       this.services=resp
     }, (err)=>{

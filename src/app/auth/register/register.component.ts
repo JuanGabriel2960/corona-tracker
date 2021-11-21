@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthCMSService } from '../services/auth-cms.service';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -10,18 +11,31 @@ import { AuthService } from '../services/auth.service';
 })
 export class RegisterComponent {
   formSubmitted = false;
+  stepForm: number = 1;
+  animate: boolean;
+  private _subscription;
 
   public registerForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8)]],
-    // role: ['', [Validators.required, Validators.minLength(8)]],
+    role: ['', Validators.required],
   });
 
-  constructor(private router: Router, private fb: FormBuilder, private authService: AuthService) { }
+  constructor(private router: Router, private fb: FormBuilder, private authService: AuthService, private authCMSService: AuthCMSService) {
+    this.animate = authCMSService.animate
+    this._subscription = authCMSService.statusChange.subscribe((value) => { 
+      this.animate = value; 
+    });
+  }
 
   register(){
     this.formSubmitted=true;
     console.log(this.registerForm.value)
+
+    if(this.registerForm.get('email')?.valid && this.registerForm.get('password')?.valid && this.registerForm.get('role')?.invalid){
+      this.nextStep()
+      return;
+    }
 
     if(this.registerForm.invalid){
       return;
@@ -31,8 +45,13 @@ export class RegisterComponent {
       .subscribe(resp=>{
         this.router.navigateByUrl('/');
       }, (err)=>{
-        console.log(err.msg)
+        console.log(err.error.errors[0].msg)
       })
+  }
+
+  nextStep(){
+    this.authCMSService.startAnimation()
+    this.stepForm=2;  
   }
 
   invalidField(field: string): boolean{
@@ -59,6 +78,15 @@ export class RegisterComponent {
     }else{
       return 'Must contain at least 8 characters'
     }
+  }
+
+  get roleErrorMsg(): string{
+    const errors = this.registerForm.get('role')?.errors;
+    if(errors?.required){
+      return 'Required'
+    }
+
+    return ''
   }
 
 }

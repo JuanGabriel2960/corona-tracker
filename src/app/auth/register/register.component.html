@@ -1,22 +1,47 @@
-<div class="register">
+<div class="register" [ngClass]="{'fade': animate}">
     <div class="text">
-        <h3>Sign up</h3>
-        <span>Complete these information to register.</span>
+        <h3 *ngIf="stepForm===1">Sign up</h3>
+        <span *ngIf="stepForm===1">Complete these information to register.</span>
+        <h4 *ngIf="stepForm===2">Why are you interested in this information?</h4>
+        <p *ngIf="stepForm===2">Select your role.</p>
     </div>
 
     <form class="form" [formGroup]="registerForm" (ngSubmit)="register()">
-        <div class="input">
+        <div class="input" *ngIf="stepForm===1">
             <label for="email">Email</label>
             <input type="email" id="email" name="email" formControlName="email" />
             <span class="err-msg" *ngIf="invalidField('email')">{{emailErrorMsg}}</span>
         </div>
-        <div class="input">
+        <div class="input" *ngIf="stepForm===1">
             <label for="password">Password</label>
             <input type="password" id="password" name="password" formControlName="password" />
             <span class="err-msg" *ngIf="invalidField('password')">{{passwordErrorMsg}}</span>
         </div>
+        <div class="extra-input" *ngIf="stepForm===2">
+            <div class="ratio-option">
+                <label for="medical">Medical: <span>I want to be more informed due to my work</span></label>
+                <input type="radio" id="medical" name="role" value="MEDICAL" formControlName="role" />
+            </div>
+            <div class="ratio-option">
+                <label for="student">Student: <span>I need information for a school assignment</span></label>
+                <input type="radio" id="student" name="role" value="STUDENT" formControlName="role" />
+            </div>
+            <div class="ratio-option">
+                <label for="reporter">Reporter: <span>I need statistics for the media report</span></label>
+                <input type="radio" id="reporter" name="role" value="REPORTER" formControlName="role" />
+            </div>
+            <div class="ratio-option">
+                <label for="tourist">Tourist: <span>I need information about a country before traveling</span></label>
+                <input type="radio" id="tourist" name="role" value="TOURIST" formControlName="role" />
+            </div>
+            <div class="ratio-option">
+                <label for="other">Other: <span>Just for curiosity and information</span></label>
+                <input type="radio" id="other" name="role" value="OTHER" formControlName="role" />
+            </div>
+            <span class="err-msg" *ngIf="invalidField('role')">{{roleErrorMsg}}</span>
+        </div>
         <button>Next</button>
     </form>
 
-    <p class="link">Already have an account? <a routerLink="/auth/login">Login</a></p>
+    <p class="link" *ngIf="stepForm===1">Already have an account? <a routerLink="/auth/login">Login</a></p>
 </div>
