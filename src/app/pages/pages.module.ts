@@ -4,22 +4,17 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PagesComponent } from './pages.component';
 
 // Components
-import { AuthComponent } from './auth.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
+
 
 
 @NgModule({
   declarations: [
-    AuthComponent,
-    LoginComponent,
-    RegisterComponent
-  ],
-  exports: [
-    LoginComponent,
-    RegisterComponent
+    PagesComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,
@@ -29,4 +24,4 @@ import { RegisterComponent } from './register/register.component';
     ReactiveFormsModule,
   ]
 })
-export class AuthModule { }
+export class PagesModule { }
