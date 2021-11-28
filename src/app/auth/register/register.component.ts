@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthCMSService } from '../services/auth-cms.service';
 import { AuthService } from '../services/auth.service';
 import Swal from 'sweetalert2';
+import { ScreenLoaderService } from 'src/app/components/screen-loader/services/screen-loader.service';
 
 @Component({
   selector: 'app-register',
@@ -22,7 +23,7 @@ export class RegisterComponent {
     role: ['', Validators.required],
   });
 
-  constructor(private router: Router, private fb: FormBuilder, private authService: AuthService, private authCMSService: AuthCMSService) {
+  constructor(private router: Router, private fb: FormBuilder, private authService: AuthService, private authCMSService: AuthCMSService, private screenLoaderService: ScreenLoaderService) {
     this.animate = authCMSService.animate
     this._subscription = authCMSService.statusChange.subscribe((value) => { 
       this.animate = value; 
@@ -42,13 +43,14 @@ export class RegisterComponent {
       return;
     }
 
-    // NOTE: add loader
+    this.screenLoaderService.start()
     this.authService.register(this.registerForm.value)
       .subscribe(resp=>{
         this.router.navigateByUrl('/');
       }, (err)=>{
         Swal.fire({title: 'Error', text: err.error.errors[0].msg, icon: 'error', confirmButtonColor: '#2541B1'})
-        console.log(err.error.errors[0].msg)
+      }).add(()=>{
+        this.screenLoaderService.stop()
       })
   }
 

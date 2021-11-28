@@ -6,10 +6,11 @@
             </div>
             <button>Search</button>
         </form>
-        <p class="results">These are the results of your search</p>
+        <p class="results">{{label}}</p>
         <div *ngFor="let country of countries">
             <app-country-card [country]="country"></app-country-card>
         </div>
+        <app-loader></app-loader>
     </div>
     <div class="map">
         <app-map-card [coordinates]="coordinates"></app-map-card>

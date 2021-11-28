@@ -5,6 +5,7 @@ import { CountryCardComponent } from './country-card/country-card.component';
 import { MapCardComponent } from './map-card/map-card.component';
 import { SafePipe } from '../pipes/safe.pipe';
 import { ScreenLoaderComponent } from './screen-loader/screen-loader.component';
+import { LoaderComponent } from './loader/loader.component';
 
 
 
@@ -13,7 +14,8 @@ import { ScreenLoaderComponent } from './screen-loader/screen-loader.component';
     CountryCardComponent,
     MapCardComponent,
     SafePipe,
-    ScreenLoaderComponent
+    ScreenLoaderComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,9 @@ import { ScreenLoaderComponent } from './screen-loader/screen-loader.component';
   ],
   exports:[
     CountryCardComponent,
-    MapCardComponent
+    MapCardComponent,
+    ScreenLoaderComponent,
+    LoaderComponent
   ]
 })
 export class ComponentsModule { }

@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ComponentsModule } from '../components/components.module';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { RegisterComponent } from './register/register.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    ComponentsModule
   ]
 })
 export class AuthModule { }

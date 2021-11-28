@@ -14,10 +14,8 @@ export class MapCardComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges){
     if(this.coordinates===undefined){
-      console.log('primera vez')
       this.mapURL='https://maps.google.com/maps?q=34.5757734,-40.4306167&hl=es&z=2&amp&output=embed'
     }else{
-      console.log('no primera vez')
       this.mapURL=`https://maps.google.com/maps?q=${this.coordinates?.latitude},${this.coordinates?.longitude}&hl=es&z=4&amp&output=embed`
     }
   }

@@ -5,6 +5,7 @@
 .content{
     height: 50%;
     padding: 1.3rem;
+    position: relative;
 }
 .map{
     height: 50%;
