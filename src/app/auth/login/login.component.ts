@@ -12,8 +12,8 @@ export class LoginComponent {
   formSubmitted = false;
 
   public loginForm = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required],
+    email: ['a@a.com', [Validators.required, Validators.email]],
+    password: ['12345678', Validators.required],
   });
 
   constructor(private router: Router, private fb: FormBuilder, private authService: AuthService) { }
@@ -26,6 +26,7 @@ export class LoginComponent {
       return;
     }
 
+    // NOTE: add loader
     this.authService.login(this.loginForm.value)
       .subscribe(resp=>{
         this.router.navigateByUrl('/');

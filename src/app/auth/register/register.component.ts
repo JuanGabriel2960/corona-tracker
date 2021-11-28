@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { delay } from 'rxjs/operators';
 import { AuthCMSService } from '../services/auth-cms.service';
 import { AuthService } from '../services/auth.service';
 
@@ -41,6 +42,7 @@ export class RegisterComponent {
       return;
     }
 
+    // NOTE: add loader
     this.authService.register(this.registerForm.value)
       .subscribe(resp=>{
         this.router.navigateByUrl('/');
@@ -51,7 +53,9 @@ export class RegisterComponent {
 
   nextStep(){
     this.authCMSService.startAnimation()
-    this.stepForm=2;  
+    setTimeout(() => {
+      this.stepForm=2;  
+    }, 1000);
   }
 
   invalidField(field: string): boolean{

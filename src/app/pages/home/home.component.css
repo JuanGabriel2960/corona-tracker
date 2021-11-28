@@ -1,0 +1,35 @@
+.home-page{
+    height: 100%;
+}
+.content{
+    height: 50%;
+    padding: 1.3rem;
+}
+.map{
+    height: 50%;
+}
+.results{
+    margin: 1.5rem 0 4rem 0;
+    font-size: 1.5rem;
+}
+
+.search-form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.search-input{
+    background-color: var(--light-gray);
+    padding: 1rem;
+    border-radius: 1.3rem;
+}
+.search-input input{
+    border: none;
+    background-color: transparent;
+}
+.search-form button{
+    background-color: var(--blue);
+    color: white;
+    border-radius: 1.3rem;
+    padding: 1rem 1.5rem;
+}
