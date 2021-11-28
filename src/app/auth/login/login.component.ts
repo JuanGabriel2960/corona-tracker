@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import Swal from 'sweetalert2';
+import { ScreenLoaderService } from 'src/app/components/screen-loader/services/screen-loader.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,7 @@ export class LoginComponent {
     password: ['12345678', Validators.required],
   });
 
-  constructor(private router: Router, private fb: FormBuilder, private authService: AuthService) { }
+  constructor(private router: Router, private fb: FormBuilder, private authService: AuthService, private screenLoaderService: ScreenLoaderService) { }
 
   login(){
     this.formSubmitted=true;
@@ -26,12 +28,14 @@ export class LoginComponent {
       return;
     }
 
-    // NOTE: add loader
+    this.screenLoaderService.start()
     this.authService.login(this.loginForm.value)
       .subscribe(resp=>{
         this.router.navigateByUrl('/');
       }, (err)=>{
-        console.log(err.msg)
+        Swal.fire({title: 'Error', text: err.error.msg, icon: 'error', confirmButtonColor: '#2541B1'})
+      }).add(()=>{
+        this.screenLoaderService.stop()
       })
   }
 
