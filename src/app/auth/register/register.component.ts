@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { delay } from 'rxjs/operators';
 import { AuthCMSService } from '../services/auth-cms.service';
 import { AuthService } from '../services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -47,6 +47,7 @@ export class RegisterComponent {
       .subscribe(resp=>{
         this.router.navigateByUrl('/');
       }, (err)=>{
+        Swal.fire({title: 'Error', text: err.error.errors[0].msg, icon: 'error', confirmButtonColor: '#2541B1'})
         console.log(err.error.errors[0].msg)
       })
   }

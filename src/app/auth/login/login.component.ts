@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +32,7 @@ export class LoginComponent {
       .subscribe(resp=>{
         this.router.navigateByUrl('/');
       }, (err)=>{
-        console.log(err.msg)
+        Swal.fire({title: 'Error', text: err.error.msg, icon: 'error', confirmButtonColor: '#2541B1'})
       })
   }
 
