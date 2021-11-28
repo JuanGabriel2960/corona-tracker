@@ -7,8 +7,8 @@ import { User } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
 
 // Interfaces
-import { Login } from '../interfaces/login';
-import { Register } from '../interfaces/register';
+import { Login } from '../../interfaces/login.interface';
+import { Register } from '../../interfaces/register.interface';
 
 @Injectable({
   providedIn: 'root'

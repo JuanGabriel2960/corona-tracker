@@ -1,0 +1,27 @@
+<div class="country-card">
+    <div class="country-info">
+        <img src="https://flagcdn.com/24x18/{{country.code.toLowerCase()}}.png" srcset="https://flagcdn.com/48x36/{{country.code.toLowerCase()}}.png 2x,
+    https://flagcdn.com/72x54/{{country.code.toLowerCase()}}.png 3x" width="24" height="18" [alt]="country.country">
+        <h4>{{country.country}}</h4>
+    </div>
+    <div class="line-card">
+        <div class="line">
+            <h5 class="dot confirmed"></h5>
+            <p>Confirmed: <span>{{country.confirmed}}</span></p>
+        </div>
+        <div class="line">
+            <h5 class="dot critical"></h5>
+            <p>Critical: <span>{{country.critical}}</span></p>
+        </div>
+    </div>
+    <div class="line-card">
+        <div class="line">
+            <h5 class="dot recoveres"></h5>
+            <p>Recoveres: <span>{{country.recovered}}</span></p>
+        </div>
+        <div class="line">
+            <h5 class="dot deaths"></h5>
+            <p>Deaths: <span>{{country.deaths}}</span></p>
+        </div>
+    </div>
+</div>

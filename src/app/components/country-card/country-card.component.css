@@ -1,0 +1,60 @@
+.country-card{
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    border: 1px solid var(--gray);
+    border-radius: 0.8rem;
+}
+.country-info{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.country-info img{
+    margin-right: 1rem;
+}
+.line-card{
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+}
+.line-card .line:not(:last-child){
+    margin-right: 2rem;
+}
+.line-card{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.line{
+    display: flex;
+    align-items: center;
+}
+.line p{
+    color: var(--gray);
+    font-weight: 500;
+}
+.line span{
+    color: var(--gray);
+    font-weight: 400;
+}
+.dot{
+    height: 10px;
+    width: 10px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+.dot.confirmed{
+    background-color: #FFE981;
+}
+.dot.critical{
+    background-color: #FF555E;
+}
+.dot.recoveres{
+    background-color: #5DDAB4;
+}
+.dot.deaths{
+    background-color: #B2B2B2;
+}

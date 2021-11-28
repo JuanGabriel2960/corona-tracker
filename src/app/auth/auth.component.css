@@ -4,6 +4,7 @@
     flex-direction: column;
     padding: 1rem;
     background-color: var(--blue);
+    overflow: hidden;
 }
 .auth-page .info{
     display: flex;
@@ -39,4 +40,30 @@
 }
 .info-buttons > button:not(:last-child){
     margin-right: 1rem;
+}
+
+.moveDown{
+    animation: moveDown 1s ease-in-out;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+.moveTop{
+    animation: moveTop 1s ease-in-out;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes moveDown{
+    from{
+        transform: translateY(0);
+    }to{
+        transform: translateY(100%);
+    }
+}
+@keyframes moveTop{
+    from{
+        transform: translateY(0);
+    }to{
+        transform: translateY(-100%);
+    }
 }

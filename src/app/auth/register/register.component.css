@@ -8,6 +8,13 @@
     font-size: 2.6rem;
     color: var(--blue);
 }
+.text h4{
+    font-size: 1.6rem;
+    color: var(--blue);
+}
+.text p{
+    font-size: 1.5rem;
+}
 .form > *:not(:last-child){
     margin-bottom: 1rem;
 }
@@ -38,4 +45,46 @@
 .err-msg{
     color: #DC2626;
     font-size: 1.5rem;
+}
+
+.extra-input{
+    display: flex;
+    flex-direction: column;
+}
+.ratio-option{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ratio-option label{
+    color: var(--blue);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-right: 2rem;
+}
+.ratio-option label > span{
+    color: var(--gray);
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+.extra-input > .ratio-option:not(:last-child){
+    margin-bottom: 0.6rem;
+}
+
+.fade{
+    animation: fade 3s ease-in-out;
+    animation-fill-mode: forwards;
+}
+@keyframes fade {
+    0%{
+        transform: translateY(0);
+    }25%{
+        transform: translateY(100vh);
+    }50%{
+        transform: translateX(200vw);
+    }75%{
+        transform: translateY(-100vh);
+    }100%{
+        transform: translateX(0);
+    }
 }

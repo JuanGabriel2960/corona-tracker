@@ -1,1 +1,17 @@
-<p>home works!</p>
+<div class="home-page">
+    <div class="content">
+        <form class="search-form" autocomplete="off" [formGroup]="countryForm" (ngSubmit)="searchCountry()">
+            <div class="search-input">
+                <input type="text" placeholder="Country" name="country" formControlName="country" />
+            </div>
+            <button>Search</button>
+        </form>
+        <p class="results">These are the results of your search</p>
+        <div *ngFor="let country of countries">
+            <app-country-card [country]="country"></app-country-card>
+        </div>
+    </div>
+    <div class="map">
+        <app-map-card [coordinates]="coordinates"></app-map-card>
+    </div>
+</div>
