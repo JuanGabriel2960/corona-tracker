@@ -24,9 +24,10 @@
     background-color: var(--light-gray);
     padding: 1rem;
     border-radius: 1.3rem;
+    width: 100%;
+    margin-right: 2rem;
 }
 .search-input input{
-    border: none;
     background-color: transparent;
 }
 .search-form button{

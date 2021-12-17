@@ -23,8 +23,9 @@ h1, h2, h3, h4, h5, h6, p, span{
 a{
     text-decoration: none;
 }
-input{
+input, select{
     outline: none;
+    border: none;
 }
 button{
     border: none;
@@ -70,4 +71,5 @@ button{
     --gray: #B2B2B2;
     --light-blue: #EFF9FF;
     --light-gray: #F6F8FA;
+    --dark-gray: #919191;
 }

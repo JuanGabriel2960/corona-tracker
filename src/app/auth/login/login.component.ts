@@ -22,7 +22,6 @@ export class LoginComponent {
 
   login(){
     this.formSubmitted=true;
-    console.log(this.loginForm.value)
 
     if(this.loginForm.invalid){
       return;

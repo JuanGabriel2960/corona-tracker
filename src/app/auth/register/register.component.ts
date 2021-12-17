@@ -32,7 +32,6 @@ export class RegisterComponent {
 
   register(){
     this.formSubmitted=true;
-    console.log(this.registerForm.value)
 
     if(this.registerForm.get('email')?.valid && this.registerForm.get('password')?.valid && this.registerForm.get('role')?.invalid){
       this.nextStep()

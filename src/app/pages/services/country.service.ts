@@ -17,6 +17,6 @@ export class CountryService {
       Authorization: token
     })
 
-    return this.http.get<Country[]>(`${environment.BACKEND_URL}/api/country/${country}`, {headers})
+    return this.http.get<Country>(`${environment.BACKEND_URL}/api/country/${country}`, {headers})
   }
 }
