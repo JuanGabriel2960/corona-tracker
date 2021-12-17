@@ -11,9 +11,9 @@ import { CountryService } from '../services/country.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  countries: Country[] = [];
+  country!: Country | null;
   coordinates!: Coordinates;
-  label: string="";
+  label: string='Try searching for a country by name';
   formSubmitted: boolean = false;
 
   public countryForm = this.fb.group({
@@ -29,19 +29,19 @@ export class HomeComponent {
       return;
     }
 
-    const country: string = this.countryForm.value.country
-    this.countries=[]
+    let countryName: string = this.countryForm.value.country
 
     this.loaderService.start()
-    this.countryService.searchCountry(country)
+    this.countryService.searchCountry(countryName)
       .subscribe(resp=>{
-        this.countries = resp;
-        let {country, code, confirmed, recovered, critical, deaths, lastChange, lastUpdate, ...coordinates} = resp[0]
+        this.country = resp;
+        let {country, code, confirmed, recovered, critical, deaths, lastChange, lastUpdate, ...coordinates} = resp
         this.coordinates=coordinates
 
         this.label="These are the results of your search"
       }, (err)=>{
         this.label=err.error.msg
+        this.country=null
       }).add(()=>{
         this.loaderService.stop()
       })

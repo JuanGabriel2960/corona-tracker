@@ -7,7 +7,7 @@
             <button>Search</button>
         </form>
         <p class="results">{{label}}</p>
-        <div *ngFor="let country of countries">
+        <div *ngIf="country">
             <app-country-card [country]="country"></app-country-card>
         </div>
         <app-loader></app-loader>

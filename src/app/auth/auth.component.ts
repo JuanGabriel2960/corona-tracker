@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthCMSService } from './services/auth-cms.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-auth',
@@ -25,8 +26,7 @@ export class AuthComponent implements OnInit {
     .subscribe(resp=>{
       this.services=resp
     }, (err)=>{
-      // NOTE: change console.log to swal.fire
-      console.log('Error getting services from the applications, please try again later.')
+      Swal.fire({title: 'Error', text: 'Getting services from the applications, please try again later', icon: 'error', confirmButtonColor: '#2541B1'})
     })
   }
 
