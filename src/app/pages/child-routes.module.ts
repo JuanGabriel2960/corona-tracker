@@ -4,10 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 // Pages
 import { HomeComponent } from './home/home.component'
+import { ProfileComponent } from './profile/profile.component';
 
 const childRoutes: Routes = [
   { path: 'home', component: HomeComponent},
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  { path: 'profile', component: ProfileComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 ]
 
 

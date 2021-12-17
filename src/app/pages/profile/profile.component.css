@@ -1,0 +1,31 @@
+.profile-page{
+    padding: 3rem 2rem;
+}
+.input-group{
+    display: flex;
+    flex-direction: column;
+}
+.input-group input, .input-group select{
+    padding: 1rem;
+    border-radius: 1.2rem;
+    border: 1px solid var(--dark-gray);
+}
+.input-group select{
+    padding: 0.87rem;
+}
+.profile-line{
+    margin: 3rem 0;
+    border-top: 1px solid var(--dark-gray);
+}
+.profile-form button{
+    width: 100%;
+    border-radius: 1.8rem;
+    padding: 1.3rem 0;
+    color: var(--white);
+    background-color: var(--blue);
+    cursor: pointer;
+    margin-top: 5rem;
+}
+.mb{
+    margin-bottom: 1.5rem;
+}
