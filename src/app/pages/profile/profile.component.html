@@ -1,27 +1,29 @@
 <div class="profile-page">
-    <form class="profile-form" autocomplete="off">
+    <form class="profile-form" autocomplete="off" [formGroup]="updateForm" (ngSubmit)="updateUser()">
         <div class="input-group mb">
             <label>Email</label>
-            <input type="mail" disabled />
+            <input type="mail" [value]="user.email" disabled />
         </div>
         <div class="input-group">
             <label>Role</label>
-            <select name="role">
-                <option value="medical">Medical</option>
-                <option value="student">Student</option>
-                <option value="reporter">Reporter</option>
-                <option value="tourist">Tourist</option>
-                <option value="other">Other</option>
+            <select name="role" formControlName="role">
+                <option value="MEDICAL">Medical</option>
+                <option value="STUDENT">Student</option>
+                <option value="REPORTER">Reporter</option>
+                <option value="TOURIST">Tourist</option>
+                <option value="OTHER">Other</option>
             </select>
         </div>
         <hr class="profile-line" />
         <div class="input-group mb">
             <label>Password</label>
-            <input type="mail" />
+            <input type="password" name="password" formControlName="password" />
+            <span class="err-msg" *ngIf="invalidField('password')">{{passwordErrorMsg}}</span>
         </div>
         <div class="input-group">
             <label>New Password</label>
-            <input type="mail" />
+            <input type="password" name="newpassword" formControlName="newpassword" />
+            <span class="err-msg" *ngIf="invalidField('newpassword')">{{newPasswordErrorMsg}}</span>
         </div>
         <button>Save Changes</button>
     </form>

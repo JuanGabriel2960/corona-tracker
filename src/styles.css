@@ -26,6 +26,10 @@ a{
 input, select{
     outline: none;
     border: none;
+    background-color: transparent;
+}
+input:disabled {
+    background: #e9e9ed;
 }
 button{
     border: none;
@@ -62,6 +66,10 @@ button{
 }
 .modal-active{
     transform: translate(-50%, -50%) scale(1)!important;
+}
+.err-msg{
+    color: #DC2626;
+    font-size: 1.5rem;
 }
 
 /* Variables */
