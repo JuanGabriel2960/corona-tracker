@@ -35,7 +35,3 @@
 .link a{
     color: var(--blue);
 }
-.err-msg{
-    color: #DC2626;
-    font-size: 1.5rem;
-}

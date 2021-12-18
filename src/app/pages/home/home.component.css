@@ -27,9 +27,6 @@
     width: 100%;
     margin-right: 2rem;
 }
-.search-input input{
-    background-color: transparent;
-}
 .search-form button{
     background-color: var(--blue);
     color: white;
