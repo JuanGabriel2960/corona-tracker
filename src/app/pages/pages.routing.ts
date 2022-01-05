@@ -1,5 +1,8 @@
-import { Routes, RouterModule } from '@angular/router';
+// Modules
 import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+// Components & Extras
 import { AuthGuard } from '../guards/auth.guard';
 import { PagesComponent } from './pages.component';
 
@@ -12,7 +15,6 @@ const routes: Routes = [
         loadChildren: () => import('./child-routes.module').then(m => m.ChildRoutesModule)
     }
 ]
-
 
 
 @NgModule({

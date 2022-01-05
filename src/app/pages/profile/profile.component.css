@@ -29,3 +29,11 @@
 .mb{
     margin-bottom: 1.5rem;
 }
+.logout{
+    width: 100%;
+    border-radius: 1.8rem;
+    padding: 1.3rem 0;
+    color: var(--white);
+    background-color: var(--red);
+    cursor: pointer;
+}

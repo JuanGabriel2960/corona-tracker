@@ -70,6 +70,10 @@ export class ProfileComponent implements OnInit {
       })
   }
 
+  logout(){
+    this.authService.logout()
+  }
+
   invalidField(field: string): boolean {
     if (this.updateForm.get(field)?.invalid && this.formSubmitted) {
       return true

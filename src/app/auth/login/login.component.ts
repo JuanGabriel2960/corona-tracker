@@ -14,8 +14,8 @@ export class LoginComponent {
   formSubmitted = false;
 
   public loginForm = this.fb.group({
-    email: ['a@a.com', [Validators.required, Validators.email]],
-    password: ['12345678', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required],
   });
 
   constructor(private router: Router, private fb: FormBuilder, private authService: AuthService, private screenLoaderService: ScreenLoaderService) { }
@@ -63,7 +63,4 @@ export class LoginComponent {
       return ''
     }
   }
-
-  
-
 }
