@@ -13,36 +13,37 @@ import { CountryService } from '../services/country.service';
 export class HomeComponent {
   country!: Country | null;
   coordinates!: Coordinates;
-  label: string='Try searching for a country by name';
+  label: string = 'Try searching for a country by name';
   formSubmitted: boolean = false;
 
   public countryForm = this.fb.group({
     country: ['', Validators.required]
   });
 
-  constructor(private fb: FormBuilder, private countryService: CountryService, private loaderService: LoaderService) {}
+  constructor(private fb: FormBuilder, private countryService: CountryService, private loaderService: LoaderService) { }
 
-  searchCountry(){
-    this.formSubmitted=true
+  searchCountry() {
+    this.formSubmitted = true
 
-    if(this.countryForm.invalid){
+    if (this.countryForm.invalid) {
       return;
     }
 
-    let countryName: string = this.countryForm.value.country
+    let countryName: string = this.countryForm.value.country;
+    this.country = null;
 
     this.loaderService.start()
     this.countryService.searchCountry(countryName)
-      .subscribe(resp=>{
+      .subscribe(resp => {
         this.country = resp;
-        let {country, code, confirmed, recovered, critical, deaths, lastChange, lastUpdate, ...coordinates} = resp
-        this.coordinates=coordinates
+        let { country, code, confirmed, recovered, critical, deaths, lastChange, lastUpdate, ...coordinates } = resp
+        this.coordinates = coordinates
 
-        this.label="These are the results of your search"
-      }, (err)=>{
-        this.label=err.error.msg
-        this.country=null
-      }).add(()=>{
+        this.label = "These are the results of your search"
+      }, (err) => {
+        this.label = err.error.msg
+        this.country = null
+      }).add(() => {
         this.loaderService.stop()
       })
   }

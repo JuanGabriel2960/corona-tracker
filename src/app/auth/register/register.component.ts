@@ -15,7 +15,6 @@ export class RegisterComponent {
   formSubmitted = false;
   stepForm: number = 1;
   animate: boolean;
-  private _subscription;
 
   public registerForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -23,76 +22,78 @@ export class RegisterComponent {
     role: ['', Validators.required],
   });
 
+  private _subscription;
   constructor(private router: Router, private fb: FormBuilder, private authService: AuthService, private authCMSService: AuthCMSService, private screenLoaderService: ScreenLoaderService) {
     this.animate = authCMSService.animate
-    this._subscription = authCMSService.statusChange.subscribe((value) => { 
-      this.animate = value; 
+    this._subscription = authCMSService.statusChange.subscribe((value) => {
+      this.animate = value;
     });
   }
 
-  register(){
-    this.formSubmitted=true;
+  register() {
+    this.formSubmitted = true;
 
-    if(this.registerForm.get('email')?.valid && this.registerForm.get('password')?.valid && this.registerForm.get('role')?.invalid){
+    if (this.registerForm.get('email')?.valid && this.registerForm.get('password')?.valid && this.registerForm.get('role')?.invalid) {
       this.nextStep()
       return;
     }
 
-    if(this.registerForm.invalid){
+    if (this.registerForm.invalid) {
       return;
     }
 
     this.screenLoaderService.start()
     this.authService.register(this.registerForm.value)
-      .subscribe(resp=>{
+      .subscribe(resp => {
         this.router.navigateByUrl('/');
-      }, (err)=>{
-        Swal.fire({title: 'Error', text: err.error.errors[0].msg, icon: 'error', confirmButtonColor: '#2541B1'})
-      }).add(()=>{
+      }, (err) => {
+        Swal.fire({ title: 'Error', text: err.error.errors[0].msg, icon: 'error', confirmButtonColor: '#2541B1' }).then(function () {
+          location.reload();
+        })
+      }).add(() => {
         this.screenLoaderService.stop()
       })
   }
 
-  nextStep(){
+  nextStep() {
     this.authCMSService.startAnimation()
     setTimeout(() => {
-      this.stepForm=2;  
+      this.stepForm = 2;
     }, 1000);
   }
 
-  invalidField(field: string): boolean{
-    if(this.registerForm.get(field)?.invalid && this.formSubmitted){
+  invalidField(field: string): boolean {
+    if (this.registerForm.get(field)?.invalid && this.formSubmitted) {
       return true
-    }else{
+    } else {
       return false
     }
   }
 
-  get emailErrorMsg(): string{
+  get emailErrorMsg(): string {
     const errors = this.registerForm.get('email')?.errors;
-    if(errors?.required){
+    if (errors?.required) {
       return 'Required'
-    }else{
+    } else {
       return 'Email is not valid'
     }
   }
 
-  get passwordErrorMsg(): string{
+  get passwordErrorMsg(): string {
     const errors = this.registerForm.get('password')?.errors;
-    if(errors?.required){
+    if (errors?.required) {
       return 'Required'
-    }else{
+    } else {
       return 'Must contain at least 8 characters'
     }
   }
 
-  get roleErrorMsg(): string{
+  get roleErrorMsg(): string {
     const errors = this.registerForm.get('role')?.errors;
-    if(errors?.required){
+    if (errors?.required) {
       return 'Required'
     }
 
     return ''
   }
-
 }
