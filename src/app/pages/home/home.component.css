@@ -50,3 +50,20 @@
         padding: 1.3rem 1.9rem;
     }
 }
+@media only screen and (min-width: 1024px) {
+    .content{
+        max-width: 890px;
+    }
+    .home-page{
+        display: flex;
+        flex-direction: row;
+    }
+    .content{
+        height: 100%;
+        width: 50%;
+    }
+    .map{
+        height: 100%;
+        width: 50%;
+    }
+}

@@ -5,6 +5,12 @@
     padding: 1.3rem;
     border-bottom: 1px solid var(--dark-gray);
 }
+.header-content{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .header h3{
     color: var(--blue);
     cursor: pointer;
@@ -24,8 +30,16 @@
 }
 
 @media only screen and (min-width: 768px) {
-    .header{
+    .header-content{
         max-width: 715px;
         margin: 0 auto;
+    }
+}
+@media only screen and (min-width: 1024px) {
+    .header{
+        padding: 1.5rem 3rem;
+    }
+    .header-content{
+        max-width: 100%;
     }
 }
